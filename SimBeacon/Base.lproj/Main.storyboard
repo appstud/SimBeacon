@@ -59,8 +59,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Settings " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbx-Rc-KO5">
+                                <rect key="frame" x="46" y="265.5" width="155.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-pp-rkK">
-                                <rect key="frame" x="26" y="260" width="325" height="31"/>
+                                <rect key="frame" x="280" y="260" width="51" height="31"/>
                                 <connections>
                                     <action selector="saveSettingsToggled:" destination="x5x-3a-Myh" eventType="valueChanged" id="bbX-J6-mwp"/>
                                 </connections>
@@ -72,24 +78,26 @@
                             <constraint firstAttribute="trailingMargin" secondItem="4sD-gB-Ay9" secondAttribute="trailing" constant="10" id="2cN-pM-fce"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Evc-Ub-CwE" secondAttribute="trailing" constant="10" id="3wG-Jm-631"/>
                             <constraint firstItem="WcV-DD-WKE" firstAttribute="top" secondItem="4sD-gB-Ay9" secondAttribute="bottom" constant="20" id="55d-cz-8xE"/>
+                            <constraint firstItem="eRT-pp-rkK" firstAttribute="leading" secondItem="fbx-Rc-KO5" secondAttribute="trailing" constant="78.5" id="5YS-M7-EU0"/>
                             <constraint firstItem="QhU-hX-0O7" firstAttribute="top" secondItem="Evc-Ub-CwE" secondAttribute="bottom" constant="20" id="62F-74-bcI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eRT-pp-rkK" secondAttribute="trailing" constant="30" id="66a-2D-B7A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pVO-PS-OdD" secondAttribute="trailing" constant="10" id="70r-Fa-NYR"/>
-                            <constraint firstItem="pVO-PS-OdD" firstAttribute="top" secondItem="eRT-pp-rkK" secondAttribute="bottom" constant="20" id="Ayx-d9-6hk"/>
+                            <constraint firstItem="pVO-PS-OdD" firstAttribute="top" secondItem="eRT-pp-rkK" secondAttribute="bottom" constant="20" id="ATi-XC-u4d"/>
+                            <constraint firstItem="eRT-pp-rkK" firstAttribute="top" secondItem="WcV-DD-WKE" secondAttribute="bottom" constant="20" id="Cvt-iw-6NP"/>
                             <constraint firstItem="Evc-Ub-CwE" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="D9u-R3-VQa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="61k-OS-DC9" secondAttribute="trailing" constant="10" id="DeX-cG-IbL"/>
                             <constraint firstItem="QhU-hX-0O7" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="LHY-cu-L7C"/>
                             <constraint firstItem="WcV-DD-WKE" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="Nkt-Ol-V4q"/>
                             <constraint firstItem="vzU-6h-I1F" firstAttribute="top" secondItem="61k-OS-DC9" secondAttribute="bottom" constant="20" id="RKf-qq-Ywr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eRT-pp-rkK" secondAttribute="trailing" constant="10" id="SCp-Ed-w40"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WcV-DD-WKE" secondAttribute="trailing" constant="10" id="UZv-FM-Hg2"/>
                             <constraint firstItem="4sD-gB-Ay9" firstAttribute="top" secondItem="QhU-hX-0O7" secondAttribute="bottom" constant="20" id="UwO-Pm-qUC"/>
-                            <constraint firstItem="eRT-pp-rkK" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="ZF6-BI-VRk"/>
                             <constraint firstItem="Evc-Ub-CwE" firstAttribute="top" secondItem="JSy-zp-DGY" secondAttribute="bottom" constant="40" id="aYl-WF-mlW"/>
                             <constraint firstItem="61k-OS-DC9" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="bKk-7x-p8d"/>
                             <constraint firstItem="pVO-PS-OdD" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="cVe-04-tZx"/>
+                            <constraint firstItem="fbx-Rc-KO5" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="30" id="dwF-30-Iju"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QhU-hX-0O7" secondAttribute="trailing" constant="10" id="ee6-zZ-mrN"/>
                             <constraint firstItem="4sD-gB-Ay9" firstAttribute="leading" secondItem="0bV-mH-FbS" secondAttribute="leadingMargin" constant="10" id="nlW-gi-2do"/>
-                            <constraint firstItem="eRT-pp-rkK" firstAttribute="top" secondItem="WcV-DD-WKE" secondAttribute="bottom" constant="20" id="yS2-Qr-7dJ"/>
+                            <constraint firstItem="fbx-Rc-KO5" firstAttribute="centerY" secondItem="eRT-pp-rkK" secondAttribute="centerY" id="uAU-wY-Wfl"/>
                         </constraints>
                     </view>
                     <connections>
