@@ -12,22 +12,24 @@ import CoreBluetooth
 
 class ViewController: UIViewController {
     
+    //MARK: - Variables
     var peripheralManager: CBPeripheralManager?
     var regionData: [String:Any]?
     
+    //MARK: - Outlets
     @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet weak var majorTextField: UITextField!
     @IBOutlet weak var minorTextField: UITextField!
     @IBOutlet weak var identifierTextField: UITextField!
     
+    @IBOutlet weak var saveSettingsSwitch: UISwitch!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
-    
-    @IBOutlet weak var saveSettingsSwitch: UISwitch!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     
+    //MARK: - Actions
     @IBAction func startAdvertising(_ sender: Any) {
         guard let uuid = uuidTextField.text,
             let majorString = majorTextField.text,
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(settingsSwitch.isOn, forKey: "Save_Settings")
     }
     
+    //MARK: - View Lifecycle
     deinit {
         self.removeObservers()
     }
@@ -77,12 +80,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: - Private
     private func advertiseDevice(region: CLBeaconRegion) {
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         let peripheralData = region.peripheralData(withMeasuredPower: nil)
         self.regionData = (peripheralData as NSDictionary) as? [String:Any]
     }
     
+    //MARK: - Setup & Observers
     private func setDelegates() {
         self.uuidTextField.delegate = self
         self.majorTextField.delegate = self
@@ -127,6 +132,7 @@ class ViewController: UIViewController {
         self.bottomConstraint.constant = height + 20
     }
     
+    //MARK: - Settings
     private func saveSettings() {
         guard self.saveSettingsSwitch.isOn else {
             return
@@ -155,6 +161,7 @@ class ViewController: UIViewController {
         self.saveSettingsSwitch.isOn = defaults.bool(forKey: "Save_Settings")
     }
     
+    //MARK: - Touch handling
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -164,11 +171,11 @@ class ViewController: UIViewController {
 extension ViewController: CBPeripheralManagerDelegate {
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        print("peripheralManagerDidUpdateState : \(peripheral.state)")
-        //        self.statusLabel.text = "Peripheral Manager powered on : \(peripheralManager)"
         if peripheral.state.rawValue == 5 {
             self.peripheralManager?.startAdvertising(self.regionData)
             self.statusLabel.text = "Advertising Beacon"
+        } else {
+            self.statusLabel.text = "Unknown state : \(peripheral.state.rawValue)"
         }
     }
     
