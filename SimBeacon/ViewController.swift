@@ -33,11 +33,14 @@ class ViewController: UIViewController {
             let majorString = majorTextField.text,
             let minorString = minorTextField.text,
             let id = identifierTextField.text else {
-                self.statusLabel.text = "Invalid input"
                 return
         }
-        
+        guard uuid != "", majorString != "", minorString != "", id != "" else {
+            self.statusLabel.text = "Missing fields"
+            return
+        }
         guard let proximityUUID = UUID(uuidString: uuid) else {
+            self.statusLabel.text = "Badly formatted UUID"
             return
         }
         let major = UInt16(majorString, radix: 10)!
@@ -48,7 +51,6 @@ class ViewController: UIViewController {
                                     major: major,
                                     minor: minor,
                                     identifier: id)
-        //self.createDeviceAndRegion()
         self.advertiseDevice(region: region)
         self.saveSettings()
     }
@@ -64,24 +66,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //let region = createBeaconRegion()
-        //advertiseDevice(region: region!)
+
         self.addObservers()
         self.setDelegates()
         self.restoreSettings()
+        self.statusLabel.text = ""
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func advertiseDevice(region: CLBeaconRegion) {
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
-        //        self.peripheralManager.
         let peripheralData = region.peripheralData(withMeasuredPower: nil)
-        self.regionData = (peripheralData as NSDictionary) as! [String:Any]
+        self.regionData = (peripheralData as NSDictionary) as? [String:Any]
     }
     
     private func setDelegates() {

@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="g5i-4n-h2N">
             <objects>
-                <viewController id="x5x-3a-Myh" customClass="ViewController" customModule="myFakeBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x5x-3a-Myh" customClass="ViewController" customModule="SimBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JSy-zp-DGY"/>
                         <viewControllerLayoutGuide type="bottom" id="vzU-6h-I1F"/>
