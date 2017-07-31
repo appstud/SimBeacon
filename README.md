@@ -1,7 +1,12 @@
 # SimBeacons
 
 Simple iOS app to simulate an iBeacon device.
-Mainly code from Apple's tutorial [Turning an iOS Device into an iBeacon](https://developer.apple.com/documentation/corelocation/turning_an_ios_device_into_an_ibeacon), with added UITextFields for customizing the UUID, major, minor and beaconID values and settings persistance.
+
+Mainly code from Apple's tutorial [Turning an iOS Device into an iBeacon](https://developer.apple.com/documentation/corelocation/turning_an_ios_device_into_an_ibeacon), with added UITextFields for customizing the UUID, major, minor and beaconID values.
+
+Settings are persisted into the UserDefaults database.
+
+![alt text](https://raw.githubusercontent.com/appstud/SimBeacon/master/Resources/icon.png)
 
 ## Getting Started
 
