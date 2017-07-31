@@ -41,7 +41,8 @@ class ViewController: UIViewController {
             self.statusLabel.text = "Missing fields"
             return
         }
-        guard let proximityUUID = UUID(uuidString: uuid) else {
+        let escapedUUID = uuid.replacingOccurrences(of: " ", with: "")
+        guard let proximityUUID = UUID(uuidString: escapedUUID.capitalized) else {
             self.statusLabel.text = "Badly formatted UUID"
             return
         }
