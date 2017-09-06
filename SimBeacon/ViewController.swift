@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet weak var majorTextField: UITextField!
     @IBOutlet weak var minorTextField: UITextField!
-    @IBOutlet weak var identifierTextField: UITextField!
     
     @IBOutlet weak var saveSettingsSwitch: UISwitch!
     @IBOutlet weak var statusLabel: UILabel!
@@ -33,11 +32,10 @@ class ViewController: UIViewController {
     @IBAction func startAdvertising(_ sender: Any) {
         guard let uuid = uuidTextField.text,
             let majorString = majorTextField.text,
-            let minorString = minorTextField.text,
-            let id = identifierTextField.text else {
+            let minorString = minorTextField.text else {
                 return
         }
-        guard uuid != "", majorString != "", minorString != "", id != "" else {
+        guard uuid != "", majorString != "", minorString != "" else {
             self.statusLabel.text = "Missing fields"
             return
         }
@@ -53,7 +51,7 @@ class ViewController: UIViewController {
         let region = CLBeaconRegion(proximityUUID: proximityUUID,
                                     major: major,
                                     minor: minor,
-                                    identifier: id)
+                                    identifier: "~")
         self.advertiseDevice(region: region)
         self.saveSettings()
     }
@@ -93,7 +91,6 @@ class ViewController: UIViewController {
         self.uuidTextField.delegate = self
         self.majorTextField.delegate = self
         self.minorTextField.delegate = self
-        self.identifierTextField.delegate = self
     }
     
     private func addObservers() {
@@ -142,7 +139,6 @@ class ViewController: UIViewController {
         defaults.set(self.uuidTextField.text, forKey: "Beacon_UUID")
         defaults.set(self.majorTextField.text, forKey: "Beacon_Major")
         defaults.set(self.minorTextField.text, forKey: "Beacon_Minor")
-        defaults.set(self.identifierTextField.text, forKey: "Beacon_ID")
     }
     
     private func restoreSettings() {
@@ -155,9 +151,6 @@ class ViewController: UIViewController {
         }
         if let minor = defaults.string(forKey: "Beacon_Minor") {
             self.minorTextField.text = minor
-        }
-        if let id = defaults.string(forKey: "Beacon_ID") {
-            self.identifierTextField.text = id
         }
         self.saveSettingsSwitch.isOn = defaults.bool(forKey: "Save_Settings")
     }
