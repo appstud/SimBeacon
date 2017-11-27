@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     //MARK: - Variables
     var peripheralManager: CBPeripheralManager?
     var regionData: [String:Any]?
+    var advertising: Bool = false
     
     //MARK: - Outlets
     @IBOutlet weak var uuidTextField: UITextField!
@@ -29,7 +30,20 @@ class ViewController: UIViewController {
     
     
     //MARK: - Actions
-    @IBAction func startAdvertising(_ sender: Any) {
+    @IBAction func toggleAdvertising(_ sender: Any) {
+        if !advertising {
+            startAdvertising()
+        } else {
+            stopAdvertising()
+        }
+    }
+    
+    @IBAction func saveSettingsToggled(_ sender: Any) {
+        let settingsSwitch = sender as! UISwitch
+        UserDefaults.standard.set(settingsSwitch.isOn, forKey: "Save_Settings")
+    }
+    
+    func startAdvertising() {
         guard let uuid = uuidTextField.text,
             let majorString = majorTextField.text,
             let minorString = minorTextField.text else {
@@ -54,11 +68,14 @@ class ViewController: UIViewController {
                                     identifier: "~")
         self.advertiseDevice(region: region)
         self.saveSettings()
+        self.advertising = true
     }
     
-    @IBAction func saveSettingsToggled(_ sender: Any) {
-        let settingsSwitch = sender as! UISwitch
-        UserDefaults.standard.set(settingsSwitch.isOn, forKey: "Save_Settings")
+    func stopAdvertising() {
+        self.peripheralManager?.stopAdvertising()
+        self.statusLabel.text = "Stopped advertising Beacon"
+        self.startButton.setTitle("Start advertising", for: .normal)
+        self.advertising = false
     }
     
     //MARK: - View Lifecycle
@@ -168,6 +185,7 @@ extension ViewController: CBPeripheralManagerDelegate {
         if peripheral.state.rawValue == 5 {
             self.peripheralManager?.startAdvertising(self.regionData)
             self.statusLabel.text = "Advertising Beacon"
+            self.startButton.setTitle("Stop advertising", for: .normal)
         } else {
             self.statusLabel.text = "Unknown state : \(peripheral.state.rawValue)"
         }
