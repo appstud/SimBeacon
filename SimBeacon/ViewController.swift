@@ -114,21 +114,21 @@ class ViewController: UIViewController {
         let nc = NotificationCenter.default
         nc.addObserver(self,
                        selector: #selector(keyboardWillHide(notif:)),
-                       name: Notification.Name.UIKeyboardWillHide,
+                       name: UIResponder.keyboardWillHideNotification,
                        object: nil)
         nc.addObserver(self,
                        selector: #selector(keyboardWillChangeFrame(notif:)),
-                       name: Notification.Name.UIKeyboardWillChangeFrame,
+                       name: UIResponder.keyboardWillChangeFrameNotification,
                        object: nil)
     }
     
     private func removeObservers() {
         let nc = NotificationCenter.default
         nc.removeObserver(self,
-                          name: Notification.Name.UIKeyboardDidHide,
+                          name: UIResponder.keyboardDidHideNotification,
                           object: nil)
         nc.removeObserver(self,
-                          name: Notification.Name.UIKeyboardWillChangeFrame,
+                          name: UIResponder.keyboardWillChangeFrameNotification,
                           object: nil)
     }
     
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
         guard let userInfo = notif.userInfo else {
             return
         }
-        let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         let height = rect.size.height
         self.bottomConstraint.constant = height + 20
     }
