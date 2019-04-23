@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		725BC08C226F4E2C005679C2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725BC08B226F4E2C005679C2 /* UITextField.swift */; };
 		AB3881C71F2F5F5A001A5B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3881C61F2F5F5A001A5B31 /* AppDelegate.swift */; };
 		AB3881C91F2F5F5A001A5B31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3881C81F2F5F5A001A5B31 /* ViewController.swift */; };
 		AB3881CC1F2F5F5A001A5B31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3881CA1F2F5F5A001A5B31 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		725BC08B226F4E2C005679C2 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		AB3881C31F2F5F5A001A5B31 /* SimBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3881C61F2F5F5A001A5B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB3881C81F2F5F5A001A5B31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		725BC08A226F4E19005679C2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				725BC08B226F4E2C005679C2 /* UITextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AB3881BA1F2F5F5A001A5B31 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		AB3881C51F2F5F5A001A5B31 /* SimBeacon */ = {
 			isa = PBXGroup;
 			children = (
+				725BC08A226F4E19005679C2 /* Extensions */,
 				AB3881C61F2F5F5A001A5B31 /* AppDelegate.swift */,
 				AB3881C81F2F5F5A001A5B31 /* ViewController.swift */,
 				AB3881CA1F2F5F5A001A5B31 /* Main.storyboard */,
@@ -140,6 +151,7 @@
 			files = (
 				AB3881C91F2F5F5A001A5B31 /* ViewController.swift in Sources */,
 				AB3881C71F2F5F5A001A5B31 /* AppDelegate.swift in Sources */,
+				725BC08C226F4E2C005679C2 /* UITextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

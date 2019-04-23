@@ -43,6 +43,10 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(settingsSwitch.isOn, forKey: "Save_Settings")
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func startAdvertising() {
         guard let uuid = uuidTextField.text,
             let majorString = majorTextField.text,
@@ -89,11 +93,14 @@ class ViewController: UIViewController {
         self.addObservers()
         self.setDelegates()
         self.restoreSettings()
+        self.customizeTextFields()
         self.statusLabel.text = ""
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    private func customizeTextFields() {
+        self.uuidTextField.darkSetting(placeholder: "uuid")
+        self.majorTextField.darkSetting(placeholder: "major")
+        self.minorTextField.darkSetting(placeholder: "minor")
     }
     
     //MARK: - Private
