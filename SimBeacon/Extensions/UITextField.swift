@@ -12,7 +12,7 @@ extension UITextField {
     
     func darkSetting(placeholder: String) {
         self.backgroundColor = UIColor.black
-        self.textColor = UIColor.lightGray
+        self.textColor = UIColor.white
         self.borderStyle = .roundedRect
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1.0

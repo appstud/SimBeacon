@@ -43,6 +43,11 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(settingsSwitch.isOn, forKey: "Save_Settings")
     }
     
+    @IBAction func generateUUIDAction(_ sender: Any) {
+        let uuid = UUID().uuidString
+        self.uuidTextField.text = uuid
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
